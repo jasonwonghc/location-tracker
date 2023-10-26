@@ -1,28 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <LocationTracker v-model="items" :fields="fields"></LocationTracker>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import LocationTracker from './components/LocationTracker.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    LocationTracker
+  },
+  data() {
+    return {
+      fields: [
+        { key: "selectRow", label: "" },
+        { key: "location", label: "Location", type: "text" },
+        { key: "latitude", label: "Latitude", type: "number"},
+        { key: "longitude", label: "Longitude", type: "number" },
+        { key: "utc_offset_minutes", label: "Time Zone", type: "number" },
+      ],
+       items: []
+    };
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  margin: 20px;
 }
 </style>
